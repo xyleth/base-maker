@@ -23,7 +23,7 @@ HexBase = "Yes";
 // Derived variables
 GridLength = BaseLength + 10;
 GridWidth = BaseWidth + 10;
-GridDepth = 0.5
+GridDepth = 0.5;
 
 if (HexBase == "Yes" ) {
     difference() {

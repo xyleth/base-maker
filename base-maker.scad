@@ -14,27 +14,27 @@ BaseStyle = "Inverted";
 //Shape of Base: "Circle", "Square", or "Hex"
 BaseShape = "Circle";
 //Desired Length of Base. For ovals make this the largest number
-BaseLength = 25;
+BaseLength = 60;
 //Desired Width of Base. For ovals make this the smallest number
-BaseWidth = 25;
+BaseWidth = 60;
 
 HexBase = "Yes";
 
 // Derived variables
 GridLength = BaseLength + 10;
 GridWidth = BaseWidth + 10;
+GridDepth = 0.5
+
 if (HexBase == "Yes" ) {
     difference() {
         create_base();
-        translate(0,0,10) {
-            if (BaseLength > 40) {
-                render() {
-                    //Render this to a mesh to prevent normalisation tree errors on larger bases
-                    create_grid(size=[GridWidth,GridLength,0.5],SW=5.5,wall=0.5);
-                }
-            } else {
-                create_grid(size=[GridWidth,GridLength,0.5],SW=5.5,wall=0.5);
+        if (BaseLength > 40) {
+            render() {
+                //Render this to a mesh to prevent normalisation tree errors on larger bases
+                create_grid(size=[GridWidth,GridLength,GridDepth],SW=5.5,wall=0.5);
             }
+        } else {
+            create_grid(size=[GridWidth,GridLength,GridDepth],SW=5.5,wall=0.5);
         }
     }
 } else {
